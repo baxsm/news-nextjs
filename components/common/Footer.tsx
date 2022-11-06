@@ -1,9 +1,14 @@
-import React from 'react'
+export default function Footer() {
 
-type Props = {}
+  const styles = {
+    footer: 'border-[#656565] border-t-2 text-center p-4 mt-6',
+  }
 
-export default function Footer({}: Props) {
   return (
-    <div>Footer</div>
+    <>
+      <footer className={styles.footer}>
+        <a href="https://github.com/baxm" rel="noreferrer" target='_blank' className="font-bold hover:text-[#ffff99]">&copy; <i>B A X S M</i></a>
+      </footer>
+    </>
   )
 }

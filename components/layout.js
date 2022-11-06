@@ -1,18 +1,17 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "./common/Footer";
 import Header from "./common/Header";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children, active}) {
+
     return (
         <>
             <Head>
                 <title>News</title>
             </Head>
-            <Header />
-            <main className="min-h-[80vh]">
+            <Header active={active}/>
             {children}
-            </main>
             <Footer />
         </>
     )

@@ -1,19 +1,37 @@
+import Heading from '../../components/common/Heading';
 import Layout from '../../components/layout'
+import Article from './Article';
 
-export default function feed({pageNumber, articles}) {
+export default function feed({ pageNumber, articles }) {
+    console.log(articles)
+
+    const styles = {
+        feed: 'flex justify-center place-items-center flex-col',
+    }
 
     return (
         <>
             <Layout active='feed'>
-                <h5>FEED</h5>
+                <section className={styles.feed}>
+                    <Heading title='Latest Feed' subtitle='Check out the Latest Articles' />
+                    {
+                        articles.map((item, index) => {
+                            return (
+                                <>
+                                    <Article article={item} />
+                                </>
+                            )
+                        })
+                    }
+                </section>
             </Layout>
         </>
     )
 }
 
-const getServerSideProps = async pageContext => {
+export const getServerSideProps = async pageContext => {
     const pageNumber = pageContext.query.slug;
-    if(!pageNumber || pageNumber < 1 || pageNumber > 5) {
+    if (!pageNumber || pageNumber < 1 || pageNumber > 5) {
         return {
             props: {
                 articles: [],
@@ -32,4 +50,13 @@ const getServerSideProps = async pageContext => {
     );
 
     const apiJson = await apiResponse.json();
+
+    const { articles } = apiJson;
+
+    return {
+        props: {
+            articles,
+            pageNumber: Number.parseInt(pageNumber),
+        }
+    }
 }

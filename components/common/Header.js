@@ -4,11 +4,11 @@ export default function Header({ active }) {
 
     const styles = {
         header: '',
-        container: 'container ',
+        container: 'container border-b-2 border-[#222]',
         content: 'p-6',
         nav: 'flex flex-row gap-[1rem] w-full place-items-center justify-center uppercase text-[1.25rem]',
         activeLink: 'text-[#fff222]',
-        break: 'px-4 text-[2rem]',
+        break: 'px-4 text-[1.25rem]',
     }
 
     const navLinks = [
@@ -39,7 +39,7 @@ export default function Header({ active }) {
                                         {
                                             item.break ? (
                                                 <>
-                                                    <p className={styles.break}>|</p>
+                                                    <p className={styles.break}>-</p>
                                                 </>
                                             ) : (
                                                 <></>

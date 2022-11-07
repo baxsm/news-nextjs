@@ -6,8 +6,6 @@ import Link from "next/link";
 
 export default function Article({ article }) {
 
-    const { author, content, description, publishedAt, source, title, url, urlToImage } = article;
-
     const styles = {
         container: 'my-6 border-2 border-[#999999] p-4',
         header: 'pb-4 flex justify-between place-items-center',
@@ -32,26 +30,26 @@ export default function Article({ article }) {
             <div className={styles.header}>
                 <div className={styles.authorContainer}>
                     {
-                        author ? (
-                            <h5 className={styles.author}>{author}</h5>
+                        article?.author ? (
+                            <h5 className={styles.author}>{article?.author}</h5>
                         ) : (
                             <h5 className={styles.author}>Unknown Author</h5>
                         )
                     }
                 </div>
                 {
-                    url ? (
+                    article?.url ? (
                         <div className="articleOriginalLink">
-                            <a href={url} rel='noreferrer' target='_blank' className={styles.articleOriginalLinkIcon}><i class="fa-solid fa-arrow-up-right-from-square" /></a>
+                            <a href={article?.url} rel='noreferrer' target='_blank' className={styles.articleOriginalLinkIcon}><i className="fa-solid fa-arrow-up-right-from-square" /></a>
                         </div>
                     ) : <></>
                 }
             </div>
             <div className={styles.top}>
                 {
-                    urlToImage ? (
+                    article?.urlToImage ? (
                         <img
-                            src={urlToImage}
+                            src={article?.urlToImage}
                             width={500}
                             height={500}
                             alt='x'
@@ -69,23 +67,20 @@ export default function Article({ article }) {
                         />
                     )
                 }
-                <div className={styles.buttonContainer}>
-
-                </div>
             </div>
             <div className={styles.bottom}>
                 <div className={styles.bottomStartContainer}>
                     <div className={styles.sourceContainer}>
-                        <h4 className={styles.source}>{source?.name}</h4>
+                        <h4 className={styles.source}>{article?.source?.name}</h4>
                     </div>
                     <div className={styles.dateContainer}>
-                        <p className={styles.date}>Posted {moment(publishedAt).fromNow()}</p>
+                        <p className={styles.date}>Posted {moment(article?.publishedAt).fromNow()}</p>
                     </div>
                 </div>
                 {
-                    description ? (
+                    article?.description ? (
                         <div className={styles.descriptionContainer}>
-                            <p className={styles.description}>{description.toString().substring(0, 150)}...</p>
+                            <p className={styles.description}>{article?.description.toString().substring(0, 150)}...</p>
                         </div>
                     ) : (
                         <div className={styles.descriptionContainer}>
@@ -94,7 +89,7 @@ export default function Article({ article }) {
                     )
                 }
                 <div className={styles.readMoreContainer}>
-                    <Link href={`/article/url=${encodeURIComponent(url)}`}>
+                    <Link href={`/article/url=${encodeURIComponent(article?.url)}`}>
                         <button className={styles.button}>READ MORE</button>
                     </Link>
                 </div>

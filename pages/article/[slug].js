@@ -7,7 +7,7 @@ export default function article({ article }) {
     return (
         <>
             <Layout active=''>
-                <div className='articleDetails' dangerouslySetInnerHTML={{ __html: article.content }} />
+                <div className='articleDetails' dangerouslySetInnerHTML={{ __html: article.content.toString().replaceAll('class=', 'className=') }} />
             </Layout>
         </>
 

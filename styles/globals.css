@@ -87,3 +87,8 @@ ul li {
     padding: 4rem 4rem;
   }
 }
+
+.paginationIcon:hover {
+  color: bisque;
+  cursor: pointer;
+}

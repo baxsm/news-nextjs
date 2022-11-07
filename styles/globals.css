@@ -8,13 +8,13 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   background: #000;
   color: #fff;
 }
 
 button {
-  border: none;
   outline: none;
 }
 
@@ -29,4 +29,61 @@ ul li {
 .container {
   max-width: 90%;
   margin: auto;
+}
+
+.articleDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 4rem 10rem;
+}
+
+.articleDetails img {
+  width: 500px;
+}
+
+.articleDetails p {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.articleDetails span {
+  font-size: 0.8rem;
+  color: #fff;
+  text-align: center;
+  display: flex;
+}
+
+.articleDetails h2 {
+  font-size: 1.5rem;
+}
+
+.articleDetails a {
+  color: brown;
+}
+
+.articleDetails li {
+  color: #656565;
+  list-style: circle;
+  margin-left: 15px;
+}
+
+.articleDetails div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  flex-direction: column;
+}
+
+.articleDetails div>ul {
+  display: inline-flex;
+}
+
+@media screen and (max-width: 1024px) {
+  .articleDetails {
+    padding: 4rem 4rem;
+  }
 }

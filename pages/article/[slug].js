@@ -6,9 +6,19 @@ export default function article({ article }) {
 
     return (
         <>
-            <Layout active=''>
-                <div className='articleDetails' dangerouslySetInnerHTML={{ __html: article.content.toString().replaceAll('class=', 'className=') }} />
-            </Layout>
+            {
+                article.content ? (
+                    <Layout active=''>
+                        <div className='articleDetails' dangerouslySetInnerHTML={{ __html: article.content.toString().replaceAll('class=', 'className=') }} />
+                    </Layout>
+                ) : (
+                    <Layout active=''>
+                        <div className='articleDetails' >
+                            <p>Could not find suitable data</p>
+                        </div>
+                    </Layout>
+                )
+            }
         </>
 
     )
@@ -28,7 +38,7 @@ export const getServerSideProps = async pageContext => {
         .then(article => { return article })
         .catch(err => { console.log(err) })
 
-    if(response) {
+    if (response) {
         return {
             props: {
                 article: response,

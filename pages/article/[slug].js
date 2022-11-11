@@ -1,6 +1,5 @@
 import { extract } from 'article-parser'
 import Layout from '../../components/layout';
-import { parse } from 'node-html-parser';
 
 export default function article({ article }) {
 

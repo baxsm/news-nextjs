@@ -6,7 +6,7 @@ export default function Header({ active }) {
         header: '',
         container: 'container border-b-2 border-[#222]',
         content: 'p-6',
-        nav: 'flex flex-row gap-[1rem] w-full place-items-center justify-center uppercase text-[1.25rem]',
+        nav: 'flex flex-row w-full place-items-center justify-center uppercase text-[1.25rem]',
         activeLink: 'text-[#fff222]',
         break: 'px-4 text-[1.25rem]',
     }
@@ -32,8 +32,8 @@ export default function Header({ active }) {
                         {
                             navLinks.map((item, index) => {
                                 return (
-                                    <>
-                                        <Link key={index} href={item.ref}>
+                                    <div key={index} className="flex justify-center place-items-center">
+                                        <Link href={item.ref}>
                                             <li className={active === item.name.toLowerCase() ? styles.activeLink : ''}>{item.name}</li>
                                         </Link>
                                         {
@@ -45,7 +45,7 @@ export default function Header({ active }) {
                                                 <></>
                                             )
                                         }
-                                    </>
+                                    </div>
                                 )
                             })
                         }

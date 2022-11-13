@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 
 import moment from "moment/moment";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Article({ article }) {
+
+    console.log(article)
 
     const styles = {
         container: 'my-6 border-2 border-[#999999] p-4',

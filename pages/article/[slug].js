@@ -1,10 +1,13 @@
 import { extract } from 'article-parser'
+import { Suspense } from 'react';
 import Layout from '../../components/layout';
+import Loading from './Loading';
 
 export default function article({ article }) {
 
     return (
         <>
+            <Suspense fallback={<Loading />}>
             {
                 article.content ? (
                     <Layout active=''>
@@ -18,6 +21,7 @@ export default function article({ article }) {
                     </Layout>
                 )
             }
+            </Suspense>
         </>
 
     )

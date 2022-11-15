@@ -1,33 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import Article from '../../pages/feed/Article'
+import Loading from '../../pages/article/Loading';
 
 export default function SearchResult({ value }) {
 
     const [articles, setArticles] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         async function getData() {
             if (value.length > 3) {
                 const articleList = await searchData(value).then(result => {
                     setArticles(result);
-                    setIsLoading(false);
                 })
             }
         }
         getData()
     }, [value])
 
-    if (isLoading) {
-        return (
-            <div className='w-full flex justify-center place-items-center p-[4rem]'>
-                <p>Loading ...</p>
-            </div>
-        )
-    }
-
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4'>
+        <Suspense fallback={<Loading />}>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4'>
             {
                 articles && articles.map((article, index) => {
                     return (
@@ -36,6 +28,7 @@ export default function SearchResult({ value }) {
                 })
             }
         </div>
+        </Suspense>
     )
 }
 

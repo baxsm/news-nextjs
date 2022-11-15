@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
 import Heading from '../../components/common/Heading';
 import Layout from '../../components/layout'
+import Loading from '../article/Loading';
 import Article from './Article';
 
 
 export default function feed({ pageNumber, articles }) {
-    console.log(articles)
 
     const styles = {
         feed: 'flex justify-center place-items-center flex-col',
@@ -16,6 +17,7 @@ export default function feed({ pageNumber, articles }) {
     return (
         <>
             <Layout active='feed'>
+                <Suspense fallback={<Loading />}>
                 <section className={styles.feed}>
                     <Heading title='Latest Feed' subtitle='Check out the Latest Articles' />
                     <div className={styles.articlesContainer}>
@@ -49,6 +51,7 @@ export default function feed({ pageNumber, articles }) {
                         </div>
                     </div>
                 </section>
+                </Suspense>
             </Layout>
         </>
     )

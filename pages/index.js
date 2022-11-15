@@ -1,6 +1,6 @@
 import Link from "next/dist/client/link";
 import SearchPage from "../components/home/SearchPage";
-import Layout from "../components/layout";
+import Layout from "./layout";
 
 export default function Home() {
 

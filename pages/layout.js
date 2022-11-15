@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React, { Suspense, useEffect } from "react";
-import Loading from "../pages/article/Loading";
-import Footer from "./common/Footer";
-import Header from "./common/Header";
+import Loading from "./article/Loading";
+import Footer from "../components/common/Footer";
+import Header from "../components/common/Header";
 
 export default function Layout({ children, active }) {
 

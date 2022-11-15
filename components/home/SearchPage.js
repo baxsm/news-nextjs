@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import Heading from '../common/Heading'
 import SearchResult from './SearchResult'
 
@@ -39,6 +39,7 @@ export default function SearchPage() {
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
+            <Suspense fallback={<p>Loading articles...</p>}>
             {
                 submit ? (
                     <div className={styles.resultContainer}>
@@ -46,6 +47,7 @@ export default function SearchPage() {
                     </div>
                 ) : <></>
             }
+            </Suspense>
         </div>
     )
 }

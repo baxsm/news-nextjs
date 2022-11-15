@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
 import Heading from '../../components/common/Heading';
-import Layout from '../../components/layout'
+import Layout from '../layout';
 import Loading from '../article/Loading';
 import Article from './Article';
 
@@ -17,10 +17,10 @@ export default function feed({ pageNumber, articles }) {
     return (
         <>
             <Layout active='feed'>
-                <Suspense fallback={<Loading />}>
                 <section className={styles.feed}>
                     <Heading title='Latest Feed' subtitle='Check out the Latest Articles' />
                     <div className={styles.articlesContainer}>
+                        <Suspense fallback={<p>Loading articles...</p>}>
                         {
                             articles.map((item, index) => {
                                 return (
@@ -30,6 +30,7 @@ export default function feed({ pageNumber, articles }) {
                                 )
                             })
                         }
+                        </Suspense>
                     </div>
                     <div className={styles.paginationContainer}>
                         <div className={styles.paginationContent}>
@@ -51,7 +52,6 @@ export default function feed({ pageNumber, articles }) {
                         </div>
                     </div>
                 </section>
-                </Suspense>
             </Layout>
         </>
     )

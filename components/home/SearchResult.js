@@ -29,7 +29,7 @@ export default function SearchResult({ value }) {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4'>
             {
-                articles.map((article, index) => {
+                articles && articles.map((article, index) => {
                     return (
                         <Article article={article} key={index} />
                     )
@@ -41,8 +41,13 @@ export default function SearchResult({ value }) {
 
 const searchData = async (keyword) => {
 
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var day = date.getDate();
+
     const apiResponse = await fetch(
-        `https://newsapi.org/v2/everything?q=${keyword}&from=2022-11-11&pageSize=6&sortBy=popularity`,
+        `https://newsapi.org/v2/everything?q=${keyword}&from=${year}-${month}-${day}&pageSize=10&sortBy=popularity`,
         {
             headers: {
                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,

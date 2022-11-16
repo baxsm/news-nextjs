@@ -1,12 +1,11 @@
+import Link from 'next/link'
 import React, { Suspense, useState } from 'react'
 import Heading from '../common/Heading'
-import SearchResult from './SearchResult'
 
 export default function SearchPage() {
 
     const styles = {
         container: 'flex justify-center flex-col place-items-center',
-        resultContainer: 'p-2',
         searchContainer: 'w-[50%] grid place-items-center p-2 relative',
         searchInput: 'bg-[transparent] w-full outline-none border-b-2 border-b-[#fff] p-2',
         searchIcon: 'absolute bottom-6 right-4 cursor-pointer'
@@ -35,19 +34,12 @@ export default function SearchPage() {
                     className={styles.searchInput}
                     placeholder="Search any Keywords (e.g. Apple, Trump etc)"
                 />
-                <div className={styles.searchIcon} onClick={() => { handleSubmit() }}>
-                    <i className="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </div>
-            <Suspense fallback={<p>Loading articles...</p>}>
-            {
-                submit ? (
-                    <div className={styles.resultContainer}>
-                        <SearchResult value={value}/>
+                <Link href={`/search/${value}`}>
+                    <div className={styles.searchIcon}>
+                        <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
-                ) : <></>
-            }
-            </Suspense>
+                </Link>
+            </div>
         </div>
     )
 }

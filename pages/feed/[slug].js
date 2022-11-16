@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import Heading from '../../components/common/Heading';
 import Layout from '../layout';
-import Loading from '../article/Loading';
 import Article from './Article';
 
 

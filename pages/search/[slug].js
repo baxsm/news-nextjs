@@ -1,6 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import Article from '../../pages/feed/Article'
-import Loading from '../../pages/article/Loading';
 import Layout from '../layout';
 
 export default function SearchResult({ articles }) {
@@ -8,7 +7,7 @@ export default function SearchResult({ articles }) {
     return (
         <Layout>
             <div className="p-8 flex justify-center flex-col place-items-center">
-                <Suspense fallback={<Loading />}>
+                <Suspense fallback={<p>Loading ...</p>}>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4'>
                         {
                             articles && articles.map((article, index) => {
